@@ -1,0 +1,10 @@
+Help-center resource attributes
+Relative document: 'https://help.example.com/docs/start'
+Outside origin: None
+Protocol-relative: None
+Page fragment: '#part'
+C1 U+0085 output: 'https://help.example.com/\x85asset'
+Control character removed: False
+C1 U+009F output: 'https://help.example.com/\x9fasset'
+Control character removed: False
+Control-character boundary remains incomplete.

@@ -1,0 +1,72 @@
+{
+  "uid": 1878,
+  "run_id": "uf-20261114-new10-html-uri-origin-policy",
+  "reviewed": true,
+  "reviewer": "Codex primary AI-assisted actual-HTML contract review",
+  "frozen_trace_sha256": "e23adb7227e5a5a2a3f89ada4bd846d42b08563b3ac7e9ece4dd66f97d53ceb6",
+  "revision": "html-origin-r1",
+  "product_modules": [
+    "bleach",
+    "bleach.origin_policy",
+    "bleach.sanitizer"
+  ],
+  "support_files": [
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\acceptance-preparation\\test_html_origin_review.py",
+      "path": "test_html_origin_review.py",
+      "sha256": "51dbf941240874feb3965f39edc4792a19b2014aa40e040f1daa4bbcdd425f1a"
+    }
+  ],
+  "commands": [
+    {
+      "name": "independent-html-origin",
+      "argv": [
+        "{python}",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "{verification}/test_html_origin_review.py",
+        "-o",
+        "addopts=",
+        "-o",
+        "cache_dir={verification}/pytest-cache"
+      ],
+      "timeout": 300
+    },
+    {
+      "name": "model-origin-tests",
+      "argv": [
+        "{python}",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_origin_policy.py",
+        "-o",
+        "addopts=",
+        "-o",
+        "cache_dir={verification}/pytest-cache"
+      ],
+      "timeout": 300
+    },
+    {
+      "name": "upstream-regression",
+      "argv": [
+        "{python}",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "tests",
+        "--ignore=tests/test_origin_policy.py",
+        "-o",
+        "addopts=",
+        "-o",
+        "cache_dir={verification}/pytest-cache"
+      ],
+      "timeout": 600
+    }
+  ]
+}

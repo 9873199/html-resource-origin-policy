@@ -1,0 +1,17 @@
+{
+  "independent_html_origin": {
+    "passed": 52,
+    "failed": 4,
+    "same_root_cause": "C1 control range omission"
+  },
+  "model_added_replay": {
+    "passed": 65,
+    "failed": 0
+  },
+  "upstream_excluding_model_added": {
+    "passed": 461,
+    "xfailed": 3,
+    "failed": 0
+  },
+  "not_summed": true
+}

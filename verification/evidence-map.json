@@ -1,0 +1,59 @@
+{
+  "requirements": [
+    {
+      "requirement": "Public Cleaner/bleach.clean opt-in source policy and reusable cleaner example",
+      "source": "bleach/__init__.py, sanitizer.py, docs/clean.rst",
+      "result": "Public interfaces and repeated/idempotent cleaning pass; disabled legacy mailto/protocol-relative behavior preserved."
+    },
+    {
+      "requirement": "Trusted HTTPS base; relative rewrite; origin triple,IDNA/default ports; prohibit cross-origin/protocol-relative/userinfo",
+      "source": "origin_policy.py URIOriginPolicy",
+      "result": "Independent normal/equivalent origins,scheme/port/suffix/userinfo/IDNA tests pass."
+    },
+    {
+      "requirement": "Real entity-decoded URI values across all URI attributes; SVG/CSS preserve stricter behavior",
+      "source": "sanitizer.py allow_token URI policy gate before SVG/CSS rules",
+      "result": "Actual parsed href/src/action/cite/poster/background and SVG xlink cases pass; javascript/entity/control tests pass except C1."
+    },
+    {
+      "requirement": "Remove control-containing URI attributes",
+      "source": "origin_policy.py28,171",
+      "result": "Literal U+0085 and U+009F (Unicode Cc) remain in parsed href/src. Original values and exact output retained; expected removal fails in4 same-root cases."
+    }
+  ],
+  "process_issues": [
+    {
+      "native_lines": [
+        149,
+        155,
+        158,
+        163,
+        166,
+        199
+      ],
+      "file": "tests/test_origin_policy.py",
+      "details": "Model creates/runs origin tests; raw tab/VT and entity control examples present, but C1 Unicode Cc range not included. Final policy regex explicitly limits itself to C0 andDEL."
+    }
+  ],
+  "product_issues": [
+    {
+      "file": "bleach/origin_policy.py",
+      "lines": [
+        28,
+        171
+      ],
+      "function": "URIOriginPolicy.sanitize_uri",
+      "trigger": "Allowed HTTPS origin with literal U+0085/U+009F inside URI path, tested as a[href] and img[src]",
+      "result": "Sanitized actual parsed attribute is retained with C1 character; should be removed under prompt control-character rule. No cross-origin escape claimed."
+    }
+  ],
+  "independent_scopes": [
+    "html-origin-r1"
+  ],
+  "source_diversity_review": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\semantic-review.json",
+  "time": "2026-11-14T21:27:51+08:00",
+  "uid": 1878,
+  "frozen_commit": "b61240bfd6e56e02b10de06bfb2c4391cfaf7b39",
+  "native_trace_sha256": "e23adb7227e5a5a2a3f89ada4bd846d42b08563b3ac7e9ece4dd66f97d53ceb6",
+  "no_model_source_changes_after_freeze": true
+}

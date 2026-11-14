@@ -1,0 +1,183 @@
+{
+  "created": "2026-11-14T21:27:51+08:00",
+  "reviewed": true,
+  "reviewer": "Codex primary AI-assisted HTML-sanitization reviewer",
+  "uid": 1878,
+  "frozen_commit": "b61240bfd6e56e02b10de06bfb2c4391cfaf7b39",
+  "native_trajectory_sha256": "e23adb7227e5a5a2a3f89ada4bd846d42b08563b3ac7e9ece4dd66f97d53ceb6",
+  "files": [
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\freeze.json",
+      "path": "freeze.json",
+      "sha256": "1da63ec9c8450960cf3f713c9c9287941b445057d820d225b3b161d73b5d68dd"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\freeze-audit.json",
+      "path": "freeze-audit.json",
+      "sha256": "2cdbac7f18fb99c6be859a7a67c0f7e641b8e5030970edf90127c28c630658a8"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\environment-reviewed.json",
+      "path": "environment-reviewed.json",
+      "sha256": "aa0fcf0faf39e6e1f4dc6afedc4da704c7637bf52b29caacf190e344530068db"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\evidence-map.json",
+      "path": "evidence-map.json",
+      "sha256": "abcf8c2ed893c238f4d2a7480126d4dae3033796172a0b112b542c439ea0db72"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\model-final-answer.txt",
+      "path": "model-final-answer.txt",
+      "sha256": "dcb93e511b574b8bf9535e540a7b5464afb97dd7e4f2d055fe8a20521158b69a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\test-results.json",
+      "path": "test-results.json",
+      "sha256": "a6f86a591e05ea35a302c71e5c7f6ac9144452f56ad1747a7f6d49d407b4246e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\evaluation-qc.json",
+      "path": "evaluation-qc.json",
+      "sha256": "cbe4d4372aa7640843844c03fba7f9c859bcbbc86173cd1ae4b50c00ade141a1"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\actual-import.json",
+      "path": "verification/html-origin-r1/actual-import.json",
+      "sha256": "dd72a0db0ea2c9858e3d61b238cf5fee9360427018bd3b5f25fee4db36362954"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\actual-import.stderr.log",
+      "path": "verification/html-origin-r1/actual-import.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\actual-import.stdout.log",
+      "path": "verification/html-origin-r1/actual-import.stdout.log",
+      "sha256": "fb434b97581233e61b21918d6f503dc8b2bcbbda095675430f908c70961ef131"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\demo.py",
+      "path": "verification/html-origin-r1/demo.py",
+      "sha256": "52951bac22e5d32106f87a0a0befb2fd373ffd59bc84703236934f57a24928c0"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\dependency-lock.json",
+      "path": "verification/html-origin-r1/dependency-lock.json",
+      "sha256": "4732d67dbe6ea33bd4331628e2eb2abc935207ed429d9bb5197cc216fdc4342d"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\dependency-lock.stderr.log",
+      "path": "verification/html-origin-r1/dependency-lock.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\dependency-lock.stdout.log",
+      "path": "verification/html-origin-r1/dependency-lock.stdout.log",
+      "sha256": "a87d003b9f67a8b692fa9481bc42807b875f687bebd1eb588b36edaea1538f2f"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\independent-html-origin.json",
+      "path": "verification/html-origin-r1/independent-html-origin.json",
+      "sha256": "cac46c502341af981b1651fd30eb9492ac27d23d42ec9dc2f825a48722493766"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\independent-html-origin.stderr.log",
+      "path": "verification/html-origin-r1/independent-html-origin.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\independent-html-origin.stdout.log",
+      "path": "verification/html-origin-r1/independent-html-origin.stdout.log",
+      "sha256": "3a1f9a50f307fe5ca97f4b1f92b547cbe0de4acb21ee350b5f6504238a07cc57"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\model-origin-tests.json",
+      "path": "verification/html-origin-r1/model-origin-tests.json",
+      "sha256": "5849ed800516b4f106149b349b0e27bcee7e6c6375cb70020134ddf29a705d39"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\model-origin-tests.stderr.log",
+      "path": "verification/html-origin-r1/model-origin-tests.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\model-origin-tests.stdout.log",
+      "path": "verification/html-origin-r1/model-origin-tests.stdout.log",
+      "sha256": "2fc29e3d69db92e503ae9b0ca56be1589e577f1745b66ca5a4d2c2df05764738"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\replay-proof.json",
+      "path": "verification/html-origin-r1/replay-proof.json",
+      "sha256": "5230417c83bc75e1b6522c5b601218e30eb49c15b33ec0b12507b2827622d587"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\reproduction-notes.md",
+      "path": "verification/html-origin-r1/reproduction-notes.md",
+      "sha256": "644c2d40e6c137817b00e2e5d629459e8178eaec1c9b45434ec0b466af450d13"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\reviewed-spec.json",
+      "path": "verification/html-origin-r1/reviewed-spec.json",
+      "sha256": "53fd963e74973dd78a14e2a3ae8caa5913215ebee873674e6c6a452529387d4c"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\test_html_origin_review.py",
+      "path": "verification/html-origin-r1/test_html_origin_review.py",
+      "sha256": "51dbf941240874feb3965f39edc4792a19b2014aa40e040f1daa4bbcdd425f1a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\upstream-regression.json",
+      "path": "verification/html-origin-r1/upstream-regression.json",
+      "sha256": "bff20a1e0b1802af5521e5f10da88bfe2bfdd408b64b8555b1dd7cd9f2f6cc31"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\upstream-regression.stderr.log",
+      "path": "verification/html-origin-r1/upstream-regression.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\upstream-regression.stdout.log",
+      "path": "verification/html-origin-r1/upstream-regression.stdout.log",
+      "sha256": "d34615c91705e946e22abfafb0739c71982b8535c664a02b39b2a8ba244c416a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\recorded-runtime-r1\\actual-commands.json",
+      "path": "verification/recorded-runtime-r1/actual-commands.json",
+      "sha256": "fb946ea4d25bbb2649291dc82d89122c55a465d2ecfabadbe0679074aadc9039"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\recorded-runtime-r1\\actual-keystrokes.json",
+      "path": "verification/recorded-runtime-r1/actual-keystrokes.json",
+      "sha256": "26b2d7427477d97fa721354889e7a8b02750a8c4ddc9a1345f1bcf91a79af4fb"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\recorded-runtime-r1\\recording-status.json",
+      "path": "verification/recorded-runtime-r1/recording-status.json",
+      "sha256": "6af8611fb22e50ec65767f61077526aaeccd21ab1a1901251ce541f5148a0794"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\recorded-runtime-r1\\runtime-output.log",
+      "path": "verification/recorded-runtime-r1/runtime-output.log",
+      "sha256": "ff2f253fed51a11b3767c6f26f04340d965fd9069a1e49c76ad7d1a6ab82d42a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\recorded-runtime-r1\\spec.json",
+      "path": "verification/recorded-runtime-r1/spec.json",
+      "sha256": "0e7746e39d174c70090fd26cb9b90d814543b573c312f1833783d13a85f1608d"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\recorded-runtime-r1\\typing-check.json",
+      "path": "verification/recorded-runtime-r1/typing-check.json",
+      "sha256": "4f5f892294f85a83707dd66100b6dcb044cc9f12da82e5f0a4f114e8929a547e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-html-uri-origin-policy\\verification\\html-origin-r1\\pytest-cache\\README.md",
+      "path": "verification/html-origin-r1/pytest-cache/README.md",
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad"
+    }
+  ],
+  "reproduction_readme": "# HTML resource origin policy review\n\nPost-session AI-assisted verification, separate from model tests. Python3.14.3; dependency-lock and frozen import paths retained. Set PYTHONPATH to matching frozen source plus verification/html-origin-r1, then python -B -m pytest -q -s test_html_origin_review.py:52 pass4 failures (all literal Unicode C1 control range omissions in a[href]/img[src], same root cause). All expected attributes observed through actual HTMLParser parse of real Cleaner output, not raw string search. Model origin tests65 pass; upstream excluding model tests461 pass3 xfail. Scopes not summed. Tests are offline, no link requests or services. Recording demo.py prints real remaining C1 attributes and exits1;75-second video is continuous/openly automated.\n\nNo model source changed after freeze. No automatic submission; user review required.\n",
+  "no_model_source_edits": true,
+  "native_trace_included": false
+}

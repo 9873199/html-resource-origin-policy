@@ -1,0 +1,72 @@
+....................................................control 0x85 parsed_value 'https://help.example.com/\x85asset'
+Fcontrol 0x85 parsed_value 'https://help.example.com/\x85asset'
+Fcontrol 0x9f parsed_value 'https://help.example.com/\x9fasset'
+Fcontrol 0x9f parsed_value 'https://help.example.com/\x9fasset'
+F
+================================== FAILURES ===================================
+___________ test_literal_c1_control_character_removed[\x85-a-href] ____________
+
+tag = 'a', name = 'href', char = '\x85'
+
+    @pytest.mark.parametrize('tag,name',[('a','href'),('img','src')])
+    @pytest.mark.parametrize('char',['\u0085','\u009f'])
+    def test_literal_c1_control_character_removed(tag,name,char):
+     uri='https://help.example.com/'+char+'asset'
+     value,out=attr(uri,tag,name)
+     print('control',hex(ord(char)),'parsed_value',repr(value))
+>    assert value is None,'Literal Unicode Cc control character must remove URI attribute'
+E    AssertionError: Literal Unicode Cc control character must remove URI attribute
+E    assert 'https://help.example.com/\x85asset' is None
+
+..\test_html_origin_review.py:64: AssertionError
+___________ test_literal_c1_control_character_removed[\x85-img-src] ___________
+
+tag = 'img', name = 'src', char = '\x85'
+
+    @pytest.mark.parametrize('tag,name',[('a','href'),('img','src')])
+    @pytest.mark.parametrize('char',['\u0085','\u009f'])
+    def test_literal_c1_control_character_removed(tag,name,char):
+     uri='https://help.example.com/'+char+'asset'
+     value,out=attr(uri,tag,name)
+     print('control',hex(ord(char)),'parsed_value',repr(value))
+>    assert value is None,'Literal Unicode Cc control character must remove URI attribute'
+E    AssertionError: Literal Unicode Cc control character must remove URI attribute
+E    assert 'https://help.example.com/\x85asset' is None
+
+..\test_html_origin_review.py:64: AssertionError
+___________ test_literal_c1_control_character_removed[\x9f-a-href] ____________
+
+tag = 'a', name = 'href', char = '\x9f'
+
+    @pytest.mark.parametrize('tag,name',[('a','href'),('img','src')])
+    @pytest.mark.parametrize('char',['\u0085','\u009f'])
+    def test_literal_c1_control_character_removed(tag,name,char):
+     uri='https://help.example.com/'+char+'asset'
+     value,out=attr(uri,tag,name)
+     print('control',hex(ord(char)),'parsed_value',repr(value))
+>    assert value is None,'Literal Unicode Cc control character must remove URI attribute'
+E    AssertionError: Literal Unicode Cc control character must remove URI attribute
+E    assert 'https://help.example.com/\x9fasset' is None
+
+..\test_html_origin_review.py:64: AssertionError
+___________ test_literal_c1_control_character_removed[\x9f-img-src] ___________
+
+tag = 'img', name = 'src', char = '\x9f'
+
+    @pytest.mark.parametrize('tag,name',[('a','href'),('img','src')])
+    @pytest.mark.parametrize('char',['\u0085','\u009f'])
+    def test_literal_c1_control_character_removed(tag,name,char):
+     uri='https://help.example.com/'+char+'asset'
+     value,out=attr(uri,tag,name)
+     print('control',hex(ord(char)),'parsed_value',repr(value))
+>    assert value is None,'Literal Unicode Cc control character must remove URI attribute'
+E    AssertionError: Literal Unicode Cc control character must remove URI attribute
+E    assert 'https://help.example.com/\x9fasset' is None
+
+..\test_html_origin_review.py:64: AssertionError
+=========================== short test summary info ===========================
+FAILED ..\test_html_origin_review.py::test_literal_c1_control_character_removed[\x85-a-href]
+FAILED ..\test_html_origin_review.py::test_literal_c1_control_character_removed[\x85-img-src]
+FAILED ..\test_html_origin_review.py::test_literal_c1_control_character_removed[\x9f-a-href]
+FAILED ..\test_html_origin_review.py::test_literal_c1_control_character_removed[\x9f-img-src]
+4 failed, 52 passed in 0.64s

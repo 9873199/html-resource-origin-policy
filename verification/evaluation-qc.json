@@ -1,0 +1,16 @@
+{
+  "time": "2026-11-14T21:27:51+08:00",
+  "reviewer": "Codex primary AI-assisted HTML-sanitization reviewer",
+  "status": "PRIMARY_REVIEW_PASSED_AWAITING_USER_REVIEW",
+  "score": 4,
+  "score_basis": "Main required origin-policy API and all broad security/compatibility paths pass; one narrow control-character omission remains. Literal C1 Unicode Cc controls U+0085/U+009F survive allowed-origin URI attributes because the new rejection regex covers only C0/DEL/backslash. No evidence of cross-origin bypass; four failure cases share one cause and are not separate penalties.",
+  "checks": {
+    "observable_actions_reviewed": true,
+    "product_requirement_mapping_reviewed": true,
+    "process_and_product_facts_verified": true,
+    "score_feedback_consistency_checked": true,
+    "non_product_errors_excluded": true,
+    "semantic_diversity_checked": true
+  },
+  "official_project_acceptance": "NOT_CLAIMED"
+}

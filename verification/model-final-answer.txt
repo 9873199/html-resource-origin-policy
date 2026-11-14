@@ -1,0 +1,29 @@
+完成。基于 f0355a7 实现了可选的 URI 来源策略，全部 526 个测试通过（含新增 65 个）。
+
+## 改动内容
+
+**新模块 `bleach/origin_policy.py`** — `URIOriginPolicy` 类：
+- 构造时校验 base URL 必须是 HTTPS、无用户名密码、主机/端口合法；允许的 origin 必须是 http(s)、不能带路径/查询/片段
+- origin 比较用解析后的 `(scheme, host, 有效端口)` 三元组：域名小写 + IDNA 编码（`exämple.com` ≡ `xn--exmple-cua.com`）、默认端口等价（`:443` ≡ 省略），子域和相似后缀（`sub.help.example.com`、`help.example.com.evil.com`）不会匹配
+- `sanitize_uri()` 先 `convert_entities` 还原实体再判断；含反斜杠/控制字符直接丢弃；纯 `#fragment` 原样保留；`//host` 协议相对地址显式丢弃；相对路径用 `urljoin` 相对可信 base 解析、核验 origin 后返回绝对地址；base 的 origin 自动视为允许
+
+**接入点**：
+- `bleach/sanitizer.py` — `Cleaner(base_url=..., allowed_origins=...)`（两个参数必须同给或同不给，否则 `ValueError`）；`BleachSanitizerFilter` 新增 `uri_origin_policy`，在 `allow_token` 里对**所有** `attr_val_is_uri` 属性（href/src/action/xlink:href…）在原有协议检查**之后**再走策略，javascript 等危险协议检查不受影响
+- `bleach/__init__.py` — `bleach.clean()` 同名公开参数透传
+- `bleach/parse_shim.py` — 导出 `urljoin`
+- SVG 的 `svg_allow_local_href`/`svg_attr_val_allows_ref` 逻辑未动，`<use>` 等仍只允许本地片段；CSS `url()` 仍只由 CSS sanitizer 处理
+
+**测试 `tests/test_origin_policy.py`** — 全部基于真实 HTML 解析后的属性值断言：实体混淆（`&#106;avascript:`、`&#9;`、`https&#58;//`）、端口（默认端口等价、`:bad`、`:99999`、`:0`）、IDN 双向等价、img src、xlink:href、form action、相对路径绝对化、跨来源/协议相对/userinfo/反斜杠/控制字符丢弃、SVG 更严限制保持、CSS 不受影响、策略关闭时行为不变、连续多次 clean 幂等、可复用 Cleaner。
+
+**文档** — `docs/clean.rst` 新增 "Allowed origins" 章节（含可复用 `Cleaner` 的 doctest 示例，已验证可运行）；`CHANGES` 加了 6.5.0 (unreleased) 条目。
+
+你的四个例子现在的行为：
+
+```python
+'<a href="https://help.example.com/docs/start">站内文档</a>'   # 相对路径 → 绝对
+'<img>跟踪像素'                                                # 跨来源 src 被删
+'<a>跳走</a>'                                                  # 协议相对被删
+'<a href="#part">页内定位</a>'                                 # 纯片段保留
+```
+
+一个值得注意的设计决定：策略开启时 `mailto:` 等非 http(s) 方案也会被丢弃——它们没有可核验的 origin，在帮助中心场景下按严格处理；策略不开启时原有协议过滤完全照旧。
