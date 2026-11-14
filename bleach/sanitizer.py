@@ -6,6 +6,7 @@ from xml.sax.saxutils import unescape
 
 from bleach import html5lib_shim
 from bleach import parse_shim
+from bleach.origin_policy import URIOriginPolicy
 
 
 #: Set of allowed tags
@@ -92,6 +93,8 @@ class Cleaner:
         strip_comments=True,
         filters=None,
         css_sanitizer=None,
+        base_url=None,
+        allowed_origins=None,
     ):
         """Initializes a Cleaner
 
@@ -120,7 +123,26 @@ class Cleaner:
         :arg CSSSanitizer css_sanitizer: instance with a "sanitize_css" method for
             sanitizing style attribute values and style text; defaults to None
 
+        :arg str base_url: fixed HTTPS base url for the optional uri origin
+            policy; relative uri attribute values are resolved against it and
+            rewritten to absolute urls; must be set together with
+            ``allowed_origins``; defaults to None which disables the origin
+            policy
+
+        :arg allowed_origins: collection of allowed http(s) origins for the
+            optional uri origin policy, e.g.
+            ``{"https://help.example.com", "https://static.example.com"}``;
+            the origin of ``base_url`` is always allowed; must be set
+            together with ``base_url``; defaults to None which disables the
+            origin policy
+
         """
+        if (base_url is None) != (allowed_origins is None):
+            raise ValueError(
+                "base_url and allowed_origins must either both be set or "
+                "both be None"
+            )
+
         self.tags = tags
         self.attributes = attributes
         self.protocols = protocols
@@ -128,6 +150,11 @@ class Cleaner:
         self.strip_comments = strip_comments
         self.filters = filters or []
         self.css_sanitizer = css_sanitizer
+
+        if base_url is not None:
+            self.uri_origin_policy = URIOriginPolicy(base_url, allowed_origins)
+        else:
+            self.uri_origin_policy = None
 
         self.parser = html5lib_shim.BleachHTMLParser(
             tags=self.tags,
@@ -197,6 +224,7 @@ class Cleaner:
             strip_html_comments=self.strip_comments,
             css_sanitizer=self.css_sanitizer,
             allowed_protocols=self.protocols,
+            uri_origin_policy=self.uri_origin_policy,
         )
 
         # Apply any filters after the BleachSanitizerFilter
@@ -268,6 +296,7 @@ class BleachSanitizerFilter(html5lib_shim.SanitizerFilter):
         strip_disallowed_tags=False,
         strip_html_comments=True,
         css_sanitizer=None,
+        uri_origin_policy=None,
     ):
         """Creates a BleachSanitizerFilter instance
 
@@ -298,6 +327,10 @@ class BleachSanitizerFilter(html5lib_shim.SanitizerFilter):
         :arg CSSSanitizer css_sanitizer: instance with a "sanitize_css" method for
             sanitizing style attribute values and style text; defaults to None
 
+        :arg URIOriginPolicy uri_origin_policy: optional origin policy that
+            uri-valued attributes are checked against after the protocol
+            check; defaults to None which disables the origin policy
+
         """
         # NOTE(willkg): This is the superclass of
         # html5lib.filters.sanitizer.Filter. We call this directly skipping the
@@ -317,6 +350,7 @@ class BleachSanitizerFilter(html5lib_shim.SanitizerFilter):
         self.svg_attr_val_allows_ref = svg_attr_val_allows_ref
         self.css_sanitizer = css_sanitizer
         self.svg_allow_local_href = svg_allow_local_href
+        self.uri_origin_policy = uri_origin_policy
 
     def sanitize_stream(self, token_iterator):
         for token in token_iterator:
@@ -557,6 +591,14 @@ class BleachSanitizerFilter(html5lib_shim.SanitizerFilter):
                     new_value = self.sanitize_uri_value(val, self.allowed_protocols)
                     if new_value is None:
                         continue
+
+                    # If an origin policy is set, check the uri value against
+                    # it after the protocol check
+                    if self.uri_origin_policy is not None:
+                        new_value = self.uri_origin_policy.sanitize_uri(new_value)
+                        if new_value is None:
+                            continue
+
                     val = new_value
 
                 # Drop values in svg attrs with non-local IRIs

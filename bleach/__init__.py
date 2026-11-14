@@ -27,6 +27,8 @@ def clean(
     strip=False,
     strip_comments=True,
     css_sanitizer=None,
+    base_url=None,
+    allowed_origins=None,
 ):
     """Clean an HTML fragment of malicious content and return it
 
@@ -68,6 +70,18 @@ def clean(
     :arg CSSSanitizer css_sanitizer: instance with a "sanitize_css" method for
         sanitizing style attribute values and style text; defaults to None
 
+    :arg str base_url: fixed HTTPS base url for the optional uri origin
+        policy; relative uri attribute values are resolved against it and
+        rewritten to absolute urls; must be set together with
+        ``allowed_origins``; defaults to None which disables the origin
+        policy
+
+    :arg allowed_origins: collection of allowed http(s) origins for the
+        optional uri origin policy, e.g.
+        ``{"https://help.example.com", "https://static.example.com"}``;
+        the origin of ``base_url`` is always allowed; must be set together
+        with ``base_url``; defaults to None which disables the origin policy
+
     :returns: cleaned text as unicode
 
     """
@@ -78,6 +92,8 @@ def clean(
         strip=strip,
         strip_comments=strip_comments,
         css_sanitizer=css_sanitizer,
+        base_url=base_url,
+        allowed_origins=allowed_origins,
     )
     return cleaner.clean(text)
 

@@ -240,6 +240,80 @@ Default protocols are in ``bleach.sanitizer.ALLOWED_PROTOCOLS``.
 .. autodata:: bleach.sanitizer.ALLOWED_PROTOCOLS
 
 
+Allowed origins (``base_url`` and ``allowed_origins``)
+======================================================
+
+In addition to protocol-based filtering, you can opt into an origin policy
+for URI attribute values by passing a fixed HTTPS ``base_url`` and a
+collection of allowed http(s) ``allowed_origins``. Both must be set
+together.
+
+When the origin policy is enabled, every attribute Bleach treats as a URI
+(``href``, ``src``, ``action``, ``xlink:href``, ...) is handled like this:
+
+* relative URIs are resolved against ``base_url`` and rewritten to absolute
+  urls
+* pure fragment references (``#section``) are kept as-is
+* absolute http(s) URIs are kept only if their origin--the scheme, host and
+  effective port triple--is in ``allowed_origins``; the origin of
+  ``base_url`` is always allowed
+* cross-origin URIs, protocol-relative URIs, URIs with a username or
+  password, and values containing backslashes or control characters are
+  dropped
+
+Origin comparison is done on the parsed origin triple, so domain name case,
+IDNA and default ports are equivalent, but subdomains and look-alike
+suffixes (``help.example.com.evil.com``) never match.
+
+For example:
+
+.. doctest::
+
+   >>> import bleach
+
+   >>> bleach.clean(
+   ...     '<a href="/docs/start">link</a>',
+   ...     base_url='https://help.example.com/',
+   ...     allowed_origins={'https://help.example.com'},
+   ... )
+   '<a href="https://help.example.com/docs/start">link</a>'
+
+   >>> bleach.clean(
+   ...     '<a href="https://outside.invalid/">link</a>',
+   ...     base_url='https://help.example.com/',
+   ...     allowed_origins={'https://help.example.com'},
+   ... )
+   '<a>link</a>'
+
+
+If you're cleaning a lot of text, use a reusable
+:py:class:`bleach.sanitizer.Cleaner` instance:
+
+.. doctest::
+
+   >>> from bleach.sanitizer import Cleaner
+
+   >>> cleaner = Cleaner(
+   ...     tags={'a', 'img'},
+   ...     attributes={'a': ['href'], 'img': ['src']},
+   ...     base_url='https://help.example.com/',
+   ...     allowed_origins={'https://help.example.com', 'https://static.example.com'},
+   ... )
+
+   >>> cleaner.clean('<a href="/docs/start">link</a>')
+   '<a href="https://help.example.com/docs/start">link</a>'
+
+   >>> cleaner.clean('<img src="https://static.example.com/logo.png">')
+   '<img src="https://static.example.com/logo.png">'
+
+
+.. Note::
+
+   The origin policy only applies to URI-valued HTML attributes. SVG
+   attributes that only allow local references keep their stricter limits
+   and CSS ``url()`` values are still handled by the CSS sanitizer.
+
+
 Stripping markup (``strip``)
 ============================
 

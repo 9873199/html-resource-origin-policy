@@ -1,6 +1,20 @@
 Bleach changes
 ==============
 
+Version 6.5.0 (unreleased)
+--------------------------
+
+**Features**
+
+* Add optional uri origin policy to ``bleach.clean`` and
+  ``bleach.sanitizer.Cleaner`` via new ``base_url`` and ``allowed_origins``
+  arguments. When set, uri attribute values are resolved against the fixed
+  HTTPS base url, rewritten to absolute urls and checked against the allowed
+  http(s) origins by scheme/host/effective-port. Cross-origin,
+  protocol-relative, userinfo, backslash, control-character and malformed
+  host/port values are dropped. When not set, protocol-based filtering is
+  unchanged.
+
 Version 6.4.0 (June 5th, 2026)
 ------------------------------
 
